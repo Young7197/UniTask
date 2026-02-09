@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+input, button {
+    padding: 5px;
+    margin: 5px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.priority-High {
+    color: red;
+}
+
+.priority-Medium {
+    color: orange;
+}
+
+.priority-Low {
+    color: green;
+}
