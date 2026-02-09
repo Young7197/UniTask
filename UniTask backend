@@ -15,10 +15,18 @@ from flask import redirect, url_for
 def add_task_page():
     if request.method == 'POST':
         task_name = request.form.get('task_name')
+        task_desc = request.form.get('task_desc')
+        task_class = request.form.get('task_class')
+        task_date = request.form.get('task_date')
+        task_priority = request.form.get('task_priority')
         if task_name:
             task = {
                 'id': len(tasks) + 1,
-                'name': task_name
+                'name': task_name,
+                'description': task_desc,
+                'class': task_class,
+                'dueDate': task_date,
+                'priority': task_priority
             }
             tasks.append(task)
         return redirect(url_for('home'))
