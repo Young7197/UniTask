@@ -1,0 +1,42 @@
+// Handle adding tasks without page refresh
+document.getElementById('addTaskForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const taskName = e.target.task_name.value;
+
+    fetch('/add_task', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name: taskName})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.task) {
+            const taskList = document.getElementById('taskList');
+            const li = document.createElement('li');
+            li.textContent = data.task.name;
+            taskList.appendChild(li);
+            e.target.task_name.value = '';
+        }
+    });
+});
+
+// Handle suggestions dynamically
+document.getElementById('suggestInput').addEventListener('input', function(e) {
+    const keyword = e.target.value;
+    if (keyword.length === 0) {
+        document.getElementById('suggestionsList').innerHTML = '';
+        return;
+    }
+
+    fetch(`/suggest?keyword=${keyword}`)
+    .then(response => response.json())
+    .then(data => {
+        const list = document.getElementById('suggestionsList');
+        list.innerHTML = '';
+        data.suggestions.forEach(task => {
+            const li = document.createElement('li');
+            li.textContent = task;
+            list.appendChild(li);
+        });
+    });
+});
