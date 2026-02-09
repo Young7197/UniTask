@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Add a New Task</h1>
+
+    <form method="POST" action="/add">
+        <p style="font-size:140%;">Task Name</p>
+        <input type="text" name="task_name" placeholder="Name" required>
+        <br>
+        <p style="font-size:140%;">Task Description</p>
+        <input type="text" name="task_desc" placeholder="Description">
+        <br>
+        <p style="font-size:140%;">Task Class or Course Type</p>
+        <input type="text" name="task_class" placeholder="Task" required>
+        <br>
+        <p style="font-size:140%;">Task Due Date</p>
+        <input type="date" id="task_date" name="task_date" required>
+        <br>
+        <p style="font-size:140%;">Task Priority Level</p>
+        <label for="task_priority">Level:</label>
+        <select name="task_priority" id="task_priority">
+        <option value="None">None</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+        </select>
+        <br>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <br>
+    <a href="/">Cancel</a>
+</body>
+</html>
