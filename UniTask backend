@@ -1,0 +1,44 @@
+from flask import Flask, request, jsonify, render_template
+
+app = Flask(__name__)
+
+# Temporary in-memory storage for tasks
+tasks = []
+
+@app.route('/')
+def home():
+    return render_template('index.html', tasks=tasks)
+
+from flask import redirect, url_for
+
+@app.route('/add', methods=['GET', 'POST'])
+def add_task_page():
+    if request.method == 'POST':
+        task_name = request.form.get('task_name')
+        if task_name:
+            task = {
+                'id': len(tasks) + 1,
+                'name': task_name
+            }
+            tasks.append(task)
+        return redirect(url_for('home'))
+    return render_template('add_task.html')
+
+@app.route('/tasks', methods=['GET'])
+def get_tasks():
+    return jsonify({'tasks': tasks})
+
+def suggest_tasks(keyword):
+    suggestions = [task['name'] for task in tasks if keyword.lower() in task['name'].lower()]
+    return suggestions
+
+@app.route('/suggest', methods=['GET'])
+def suggest():
+    keyword = request.args.get('keyword', '')
+    if not keyword:
+        return jsonify({'error': 'Keyword is required'}), 400
+    suggestions = suggest_tasks(keyword)
+    return jsonify({'keyword': keyword, 'suggestions': suggestions})
+
+if __name__ == '__main__':
+    app.run(debug=True)
