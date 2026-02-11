@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html>
+<!--Top of "Home" page-->
 <head>
-    <title>Task Manager Prototype</title>
+    <title>Task Manager Prototype 1</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
+<!--Body of "Home" page-->
 <body>
     <h1>Task Manager</h1>
 
+    <!--Add Task button-->
     <h2>Add a Task</h2>
     <a href="/add">
         <button>Add Task</button>
     </a>
 
-
+    <!--Lists all task's name & due date in order of date and colored by priority-->
     <h2>All Tasks</h2>
     <ul id="taskList">
         {% for task in tasks %}
             <li class="priority-{{ task['priority'] }}">
-                {{ task['name'] }}     ({{task['dueDate'] }})
+                {{ task['name'] }}     ({{ task['dueDate'].strftime("%b %d, %Y") }})
             </li>
         {% endfor %}
     </ul>
 
+    <!--Lists all suggestions-->
     <h2>Suggestions</h2>
-    <input type="text" id="suggestInput" placeholder="Type keyword...">
-    <ul id="suggestionsList"></ul>
+    <ul>
+        {% for suggestion in suggestions %}
+            <li>{{ suggestion }}</li>
+        {% endfor %}
+    </ul>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
