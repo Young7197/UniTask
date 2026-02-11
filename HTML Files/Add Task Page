@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
+
+<!--Top of "Add Task" page-->
 <head>
     <title>Add Task</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
+<!--Body of "Add Task" page-->
 <body>
     <h1>Add a New Task</h1>
 
     <form method="POST" action="/add">
+        <!--Asks for task's name (text)-->
         <p style="font-size:140%;">Task Name</p>
         <input type="text" name="task_name" placeholder="Name" required>
         <br>
+
+        <!--Asks for task's description (text)-->
         <p style="font-size:140%;">Task Description</p>
         <input type="text" name="task_desc" placeholder="Description">
         <br>
+
+        <!--Asks for task's class (text)-->
         <p style="font-size:140%;">Task Class or Course Type</p>
-        <input type="text" name="task_class" placeholder="Task" required>
+        <input type="text" name="task_class" placeholder="Task">
         <br>
+
+        <!--Asks for task's due date (date)-->
         <p style="font-size:140%;">Task Due Date</p>
         <input type="date" id="task_date" name="task_date" required>
         <br>
+
+        <!--Asks for task's priority level (drop-down list)-->
         <p style="font-size:140%;">Task Priority Level</p>
         <label for="task_priority">Level:</label>
         <select name="task_priority" id="task_priority">
@@ -29,10 +42,13 @@
         <option value="Low">Low</option>
         </select>
         <br>
+
+        <!--Submit button-->
         <button type="submit">Add Task</button>
     </form>
 
+    <!--Cancel task creation button-->
     <br>
-    <a href="/">Cancel</a>
+    <a href="/home">Cancel</a>
 </body>
 </html>
