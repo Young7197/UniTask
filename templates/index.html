@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<!--Top of "Home" page-->
+<head>
+    <title>Task Manager Prototype 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<!--Body of "Home" page-->
+<body>
+    <!--Header of "Home" page-->
+    <div class="home-header">
+        <h1>Task Manager</h1>
+        <button class="menu-btn" onclick="openMenu()">☰</button>
+    </div>
+
+    <!--Collapsable side menu-->
+    <div class="side-menu" id="sideMenu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="/home">Home</a>
+    <a href="/task_list">Task List</a>
+    <a href="/add">Add Task</a>
+    <a href="/suggestions">Suggestions</a>
+    <a href="/research">Research</a>
+    <a href="/help">Help</a>
+    <a href="/login">Logout</a>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <!--Task Details Modal for the Calendar-->
+    <div id="taskModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTaskName"></h2>
+        <p><strong>Description:</strong> <span id="modalDescription"></span></p>
+        <p><strong>Class:</strong> <span id="modalCourse"></span></p>
+        <p><strong>Due Date:</strong> <span id="modalDueDate"></span></p>
+        <p><strong>Priority:</strong> <span id="modalPriority"></span></p>
+        <label for="modalStatus"><strong>Status:</strong></label>
+        <select id="modalStatus">
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        </select>
+        <button id="saveStatusBtn">Save</button>
+    </div>
+    </div>
+
+    <!--Container (calender on the left & suggestions on the right)-->
+    <div class="container">
+        <!--Section for calender-->
+        <section class="calendar">
+            <div class="calendar-header">
+                <button onclick="goToPreviousMonth()">◀</button>
+                <h2 id="monthYear"></h2>
+                <button onclick="goToNextMonth()">▶</button>
+            </div>
+
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </section>
+
+        <!--Color Legend for the Calendar-->
+        <section class="legend-section">
+            <h2>Color Legend</h2>
+            <div class="legend">
+                <div class="legend">
+                <div class="legend-item">
+                    <span class="color-box math"></span> Math
+                </div>
+                <div class="legend-item">
+                    <span class="color-box science"></span> Science
+                </div>
+                <div class="legend-item">
+                    <span class="color-box english"></span> English
+                </div>
+                <div class="legend-item">
+                    <span class="color-box humanities"></span> Humanities
+                </div>
+                <div class="legend-item">
+                    <span class="color-box language"></span> Foreign Languages
+                </div>
+                <div class="legend-item">
+                    <span class="color-box default"></span> Other
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--Section for deadlines-->
+    <section class="deadline-section">
+        <h2>Upcoming Deadlines</h2>
+        <ul>
+        {% for time_suggestion in time_suggestions %}
+            <div class="{% if 'overdue' in time_suggestion.text.lower() %}overdue{% endif %}">
+                <li>{{ time_suggestion.text }}</li>
+            </div>
+        {% endfor %}
+        </ul>
+    </section>
+
+    <!--Style of the page-->
+    <style>
+        html, body {
+            background-color: white;            
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script type="application/json" id="calendarTasksData">
+    {{ tasks | tojson | safe }}
+    </script>
+    <script>
+        const calendarTasks = JSON.parse(document.getElementById('calendarTasksData').textContent);
+        console.log(calendarTasks);
+    </script>
+</body>
+</html>

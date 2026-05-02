@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<!--Top of "Add Task" page-->
+<head>
+    <title>Add Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<!--Body of "Add Task" page-->
+<body>
+    <!--Header of "Task Page" page-->
+    <div class="home-header">
+        <h1>Add a New Task</h1>
+    </div>
+    
+    <!--Create a new task-->
+    <form method="POST" action="/add">
+        <!--Asks for task's name (text)-->
+        <p style="font-size:140%;">Task Name</p>
+        <input type="text" name="task_name" placeholder="Type here" required>
+        <br>
+
+        <!--Asks for task's description (text)-->
+        <p style="font-size:140%;">Task Description</p>
+        <textarea id="task_desc" name="task_desc" placeholder="Type here"></textarea>
+        <br>
+
+        <!--Asks for task's class (text)-->
+        <p style="font-size:140%;">Task Class Type</p>
+        <input type="text" name="task_class" placeholder="Type here">
+        <br>
+
+        <!--Asks for task's due date (date)-->
+        <p style="font-size:140%;">Task Due Date</p>
+        <input type="date" id="task_date" name="task_date" required>
+        <br>
+
+        <!--Asks for task's priority level (drop-down list)-->
+        <p style="font-size:140%;">Task Priority Level</p>
+        <label for="task_priority">Level:</label>
+        <select name="task_priority" id="task_priority">
+        <option value="None">None</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+        </select>
+        <br>
+
+        <!--Asks for task's status (drop-down list)-->
+        <p style="font-size:140%;">Task Status</p>
+        <label for="task_status">Status:</label>
+        <select name="task_status" id="task_status">
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        </select>
+        <br>
+
+        <!--Submittion Bar-->
+        <div class="submission-bar">
+            <div class="submission-item">
+                <button type="submit">Add Task</a>
+            </div>
+            <div class="submission-item">
+                <a href="/task_list">Cancel</a>
+            </div>
+        </div>
+    </form>
+
+    <!--Style of the page-->
+    <style>
+        html,body {
+            background-color:white;            
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        p, input[type="text"], input[type="date"], label {
+            margin-left: 15px;
+        }
+    </style>
+</body>
+</html>

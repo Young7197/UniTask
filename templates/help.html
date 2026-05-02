@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<!--Top of "Help Section" page-->
+<head>
+    <title>Task Manager Prototype 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<!--Body of "Help Section" page-->
+<body>
+    <!--Header of "Help Section" page-->
+    <div class="home-header">
+        <h1>Help Section</h1>
+        <button class="menu-btn" onclick="openMenu()">☰</button>
+    </div>
+
+     <!--Collapsable side menu-->
+    <div class="side-menu" id="sideMenu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="/home">Home</a>
+    <a href="/task_list">Task List</a>
+    <a href="/add">Add Task</a>
+    <a href="/suggestions">Suggestions</a>
+    <a href="/research">Research</a>
+    <a href="/help">Help</a>
+    <a href="/login">Logout</a>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <div class="format">
+        <!--About the 'Home' page-->
+        <h2>📆<u>Home</u>📆</h2>
+        <p>
+            The 'Home' page is where the user first starts out whenever
+            they log into UniTask. This page contains a functional calendar
+            that is connected to Eastern Standard Time. Whenever a task is
+            created, an associated task box displaying the task's name will 
+            appear on the calendar on that task's due date. These task boxes
+            are interactable and by clicking them, a pop-up appears containing
+            that task's name, description, class, due date, priority level, 
+            and status. The user can either exit out of that pop-up or they can
+            change the status of that task. If they change the status to 'Completed',
+            that task will disapper from the calendar. Each task box will be 
+            specific color. Their colorization depends on what class that task
+            is classified as with gray being the default color. What color is 
+            associated with which types of classes is displayed on the color legend
+            to the left of the calendar. Underneath the calendar is a list of
+            upcoming deadlines. This list displays tasks that are due that day,
+            the next day, or are overdue with overdue tasks being colored red. 
+            These deadlines are ordered based on the task's due date with the tasks 
+            with the closest due dates being at the top of the list.
+        </p>
+        <br>
+
+        <!--About the 'Task List' page-->
+        <h2>📋<u>Task List</u>📋</h2>
+        <p>
+            The 'Task List' page is where users can view any and all
+            the tasks that they have created within a list. Each entry
+            on the least displays a task's name, due date, priority level,
+            and status. The text for each entry is displayed in a color
+            specific to the task's priority level with black tasks having
+            no priority level, green tasks having a low priority level,
+            yellow tasks having a medium priority level, and red tasks
+            having a high priority level. The list is ordered based on
+            a task's due date with the tasks with the closest due dates
+            being at the top of the list. Each entry also has two buttons
+            at the very end: a green 'Edit' button and a red 'Delete' 
+            button. The 'Edit' button displays a pop-up window with all
+            that task's inputted information where the user can either
+            change the information about that task or close the window.
+            If the user does make changes and submits them, simply reload
+            the page and the changes will appear. The 'Delete' button 
+            permanently deletes that task from the user's account. A
+            warning does pop up confirming if the user wants to delete
+            that task to prevent accidental deletions. Just because a
+            user deletes a task doesn't mean that exact same task can't be
+            recreated.
+        </p>
+        <br>
+
+        <!--About the 'Add Task' page-->
+        <h2>📝<u>Add Task</u>📝</h2>
+        <p>
+            The 'Add Task' page is where users can add their own
+            customized tasks to their account. Any task submitted
+            will be visible in the list on the 'Task List' page
+            and on the calendar on the 'Home' page. Any task the 
+            user creates can be edited and/or deleted at any time.
+            There are various pieces of information a user can input 
+            about each of their tasks including:
+        </p>
+        <ul>
+            ❖ <b>Name: </b> 
+            Provide a name for this task. This is a required field.
+        </ul>
+        <ul>
+            ❖ <b>Description: </b> 
+            Provide a description for this task. This is not a required field.
+        </ul>
+        <ul>
+            ❖ <b>Class Type:</b> 
+            Provide the subject for this task. This is not a required field.
+        </ul>
+        <ul>
+            ❖ <b>Due Date: </b> 
+            Provide the due date for this task. This is a required field.
+        </ul>
+        <ul>
+            ❖ <b>Priority Level: </b> 
+            Provide a priority level for this task. This is not a required field.
+        </ul>
+        <ul>
+            ❖ <b>Status: </b> 
+            Provide a status for this task. This is a required field.
+        </ul>
+        <br>
+
+        <!--About the 'Suggestions' page-->
+        <h2>💫<u>Suggestions</u>💫</h2>
+        <p>
+            The 'Suggestions' page is where automatic suggestions about 
+            the user's tasks are generated in order to help provide some
+            assistance and/or a direction of focus to the user if necessary. 
+            Each time a task is created, based on the information provided 
+            by the user about that task, there is a chance that a general
+            suggestion or multiple will be generated about said task.
+            Whenever a task that has generated a suggestion has been either 
+            marked as completed, deleted, or is overdue, that suggestion is 
+            removed as well. The suggestions are divided into four main groups:
+            <ul>
+                ❖ <b>Studying: </b> 
+                These suggestions are generated whenever a task revolves
+                around a quiz or test or exam. These suggestions encourage
+                the user to study, practice, and pace themselves in order
+                for them to get the best result on their upcoming test.
+            </ul>
+            <ul>
+                ❖ <b>Projects: </b> 
+                These suggestions are generated whenever a task revolves
+                around large projects and/or essays. Assignments that are
+                typically complex and usually take multiple days to complete.
+                These suggestions encourage the user to break their larger
+                assignments down to multiple parts or to meet up with group
+                members for group projects in order for them to have the least
+                stressful experience possible when completing their assignments.
+            </ul>
+            <ul>
+                ❖ <b>Researching:</b> 
+                These suggestions are generated whenever a task revolves
+                around researching for papers, articles, and/or datasets.
+                These suggestions encourage the user to check out the 'Research'
+                page for suggestions about where they can locate real, reliable,
+                peer-reviewed information in order for them to have an easier time
+                finding the sources they are searching for.
+            </ul>
+            <ul>
+                ❖ <b>Task Priority: </b> 
+                These suggestions are generated whenever a task is marked as
+                high priority. These suggestions encourage the user to focus on
+                completing these high priority tasks as soon as possible in order
+                for them to be relieved of the stress of those assignments looming
+                over their heads as quickly as possible.
+            </ul>
+        </p>
+        <br>
+
+        <!--About the 'Reseach' page-->
+        <h2>📚<u>Research</u>📚</h2>
+        <p>
+            The 'Research' page is where users can go to quickly find
+            digital sources of information that contains papers, articles,
+            studies, datasets, and more that are reliable and peer-reviewed.
+            These sources are separated into the types of engines they originate
+            from. However, not every paper within these sources are highly cited
+            so users are encourage to use multiple sources to confirm the
+            information given on one. When reviewing these papers, users
+            should check the publication date since newer is papers are often 
+            better, depending on the topic. Users are also warned to avoid
+            random blog-sticks to .edu, .gov, or trusted databases.
+        </p>
+    </div>
+
+    <!--Style of the page-->
+    <style>
+        html, body {
+            background-color: white;            
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .format {
+            border-left: 2px solid black; 
+            padding: 20px;          
+            margin: 10px;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

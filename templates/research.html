@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<!--Top of "Research" page-->
+<head>
+    <title>Task Manager Prototype 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<!--Body of "Research" page-->
+<body>
+    <!--Header of "Research" page-->
+    <div class="home-header">
+        <h1>Research Assistance</h1>
+        <button class="menu-btn" onclick="openMenu()">☰</button>
+    </div>
+
+     <!--Collapsable side menu-->
+    <div class="side-menu" id="sideMenu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="/home">Home</a>
+    <a href="/task_list">Task List</a>
+    <a href="/add">Add Task</a>
+    <a href="/suggestions">Suggestions</a>
+    <a href="/research">Research</a>
+    <a href="/help">Help</a>
+    <a href="/login">Logout</a>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <!--Research text-->
+    <div class="format">
+        <h2>📚<u>Academic Search Engines</u>📚</h2>
+        <p><b><a href="https://scholar.google.com/">Google Scholar</a></b></p>
+        <p>A free search engine specifically for academic content. 
+        You can find peer-reviewed papers, theses, books, and 
+        citations. It's one of the easiest places to start research.</p>
+        <p><b><a href="https://www.semanticscholar.org/">Semantic Scholar</a></b></p>
+        <p>Uses AI to highlight important parts of papers and show 
+        highly cited research. Great for quickly understanding 
+        complex topics.</p>
+        <br>
+
+        <h2>🏫<u>Digital Libraries & Journals</u>🏫</h2>
+        <p><b><a href="https://www.jstor.org/">JSTOR</a></b></p>
+        <p>A well-known digital library with access to scholarly 
+        journals, books, and primary sources. Many schools provide 
+        free access.</p>
+        <p><b><a href="https://pubmed.ncbi.nlm.nih.gov/">PubMed</a></b></p>
+        <p>A massive database of medical and life sciences research. 
+        Ideal for biology, health, and medicine-related topics.</p>
+        <p><b><a href="https://ieeexplore.ieee.org/Xplore/home.jsp">IEEE Xplore</a></b></p>
+        <p>Focuses on engineering, computer science, and technology 
+        research papers.</p>
+        <br>
+
+        <h2>📖<u>Open Access Resources (Free to Use)</u>📖</h2>
+        <p><b><a href="https://doaj.org/">Directory of Open Access Journals</a></b></p>
+        <p>A collection of peer-reviewed journals that are completely
+        free to access.</p>
+        <p><b><a href="https://core.ac.uk/">CORE</a></b></p>
+        <p>Aggregates millions of open-access research papers from 
+        repositories worldwide.</p>
+        <p><b><a href="https://arxiv.org/">arXiv</a></b></p>
+        <p>Free access to research papers in physics, math, 
+        computer science, and more. (Note: not all papers are 
+        peer-reviewed yet.)</p>
+        <br>
+        
+        <h2>📊<u>Data & Statistics Sources</u>📊</h2>
+        <p><b><a href="https://www.census.gov/">U.S. Census Bureau</a></b></p>
+        <p>Provides reliable population, economic, and demographic data.</p>
+        <p><b><a href="https://databank.worldbank.org/">World Bank</a></b></p>
+        <p>Offers global statistics on economics, health, education, 
+        and development.</p>
+        <p><b><a href="https://www.kaggle.com/">Kaggle</a></b></p>
+        <p>A platform with downloadable datasets for analysis, 
+        especially useful for coding and data science projects. Be
+        careful for it can contain synthetic data.</p>
+    </div>
+    <!--Style of the page-->
+    <style>
+        html, body {
+            background-color: white;            
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .format {
+            border-left: 2px solid black; 
+            padding: 20px;          
+            margin: 10px;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

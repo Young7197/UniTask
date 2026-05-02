@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Top of "Login" page-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Login</title>
+</head>
+
+<!--Body of "Login" page-->
+<body>
+    <!--Header of "Login" page-->
+    <div class="login-header">
+        <h1>UniTask</h1>
+        <p>A student's personal task management system</p>
+    </div>
+
+    <!--Login box-->
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Login to your account</h1>
+        
+             <!--Error checker-->
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            
+            <!--Login credentials-->
+            <form action="/login" method="post">
+                <label for="username">Email:</label>
+                <input type="text" name="username" required />
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" name="password" required />
+                <br>
+                <button type="submit" class="login-button-left">Login</button>
+            </form>
+            
+            <!--Create an account button-->
+             <a href="/create_account" class="login-button-right">
+                <button>Create Account</button>
+            </a>
+        </div>
+    </div>
+
+    <!--Style of the page-->
+    <style>
+        body {
+            background-color:aqua;            
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</body>
+</html>

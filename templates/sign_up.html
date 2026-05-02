@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Top of "Create Account" page-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Sign Up</title>
+</head>
+
+<!--Body of "Create Account" page-->
+<body>
+    <!--Header of "Task Page" page-->
+    <div class="login-header">
+        <h1>Create an Account</h1>
+    </div>
+
+    <!--Create an account box-->
+    <div class="login-container">
+        <div class="login-box">
+            <!--Error checker-->
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <!--Create an account credentials-->
+            <form action="/create_account" method="post">
+                <label for="username">Email:</label>
+                <input type="text" name="username" required />
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" name="password" required />
+                <br>
+                <button type="submit" class="login-button-left">Sign Up</button>
+            </form>
+
+            <!--Cancel account creation button-->
+            <a href="/login" class="login-button-right">
+                <button>Cancel</button>
+            </a>
+        </div>
+    </div>
+
+    <!--Style of the page-->
+    <style>
+        body {
+            background-color:aqua;            
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</body>
+</html>

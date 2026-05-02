@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<!--Top of "Task List" page-->
+<head>
+    <title>Task Manager Prototype 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<!--Body of "Task Page" page-->
+<body>
+    <!--Header of "Task Page" page-->
+    <div class="home-header">
+        <h1>Task List</h1>
+        <button class="menu-btn" onclick="openMenu()">☰</button>
+    </div>
+
+    <!--Collapsable side menu-->
+    <div class="side-menu" id="sideMenu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="/home">Home</a>
+    <a href="/task_list">Task List</a>
+    <a href="/add">Add Task</a>
+    <a href="suggestions">Suggestions</a>
+    <a href="/research">Research</a>
+    <a href="/help">Help</a>
+    <a href="/login">Logout</a>
+    </div>
+        
+    <!--Task List Labels-->
+    <div class="task-row labels">
+        <div class="task-cell name">Task Name</div>
+        <div class="task-cell due">Due Date</div>
+        <div class="task-cell priority">Priority Level</div>
+        <div class="task-cell status">Status</div>
+        <div class="task-cell actions">       </div>
+    </div>
+
+    <!--Task List Assignments-->
+    {% for task in tasks %}
+        <div class="task-row priority-{{ task['priority'] }}" id="task-{{ task.id }}">
+            <div class="task-cell name">{{ task['name'] }}</div>
+            <div class="task-cell due">{{ task['due_date'].strftime("%b %d, %Y") }}</div>
+            <div class="task-cell priority">{{ task['priority'] }}</div>
+            <div class="task-cell status">{{ task['status'] }}</div>
+            <div class="task-cell actions">
+                <button type="button" class="editButton"
+                    data-id="{{ task.id }}"
+                    data-name="{{ task.name }}"
+                    data-description="{{ task.description }}"
+                    data-course="{{ task.course }}"
+                    data-due-date="{{ task.due_date.strftime('%Y-%m-%d') }}"
+                    data-priority="{{ task.priority }}"
+                    data-status="{{ task.status }}">
+                    Edit
+                </button>
+                <form method="POST" action="{{ url_for('delete_task', task_id=task['id']) }}">
+                    <button type="submit"
+                            class="delete-button"
+                            onclick="return confirm('Delete this task?');">
+                            Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+
+    <!-- Edit Task Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <form id="editTaskForm">
+                <input type="hidden" id="editTaskId">
+
+                <label>Task Name:</label>
+                <input type="text" id="editTaskName" required>
+
+                <label>Task Description:</label>
+                <input type="text" id="editTaskDescription">
+
+                <label>Class or Course Type:</label>
+                <input type="text" id="editTaskClass">
+
+                <label>Due Date:</label>
+                <input type="date" id="editTaskDueDate" required>
+
+                <label>Priority Level:</label>
+                <select id="editTaskPriority">
+                    <option value="None">None</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <label>Status:</label>
+                <select id="editTaskStatus">
+                    <option value="Not Started">Not Started</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+
+                <div class="modal-buttons">
+                    <button type="submit">Submit Changes</button>
+                    <button type="button" onclick="closeModal()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Style of the page-->
+    <style>
+        html, body {
+            background-color:white;            
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

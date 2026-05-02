@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<!--Top of "Suggestion" page-->
+<head>
+    <title>Task Manager Prototype 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<!--Body of "Suggestion" page-->
+<body>
+    <!--Header of "Suggestions" page-->
+    <div class="home-header">
+        <h1>General Suggestions</h1>
+        <button class="menu-btn" onclick="openMenu()">☰</button>
+    </div>
+
+    <!--Collapsable side menu-->
+    <div class="side-menu" id="sideMenu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <a href="/home">Home</a>
+    <a href="/task_list">Task List</a>
+    <a href="/add">Add Task</a>
+    <a href="/suggestions">Suggestions</a>
+    <a href="/research">Research</a>
+    <a href="/help">Help</a>
+    <a href="/login">Logout</a>
+    </div>
+
+    <div class="suggestion-container">
+        <section class="suggestion-box">
+            <ul>
+            <h2>Suggestions for Studying</h2>
+            {% for s in grouped.study %}
+                <p>❖ {{ s.text }}</p>
+            {% endfor %}
+            </ul>
+        </section>
+    
+        <section class="suggestion-box">
+            <ul>
+            <h2>Suggestions for Projects</h2>
+            {% for s in grouped.project %}
+                <p>❖ {{ s.text }}</p>
+            {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+    <div class="suggestion-container">
+        <section class="suggestion-box">
+            <ul>
+            <h2>Suggestions for Researching</h2>
+            {% for s in grouped.research %}
+                <p>❖ {{ s.text }}</p>
+            {% endfor %}
+            </ul>
+        </section>
+    
+        <section class="suggestion-box">
+            <ul>
+            <h2>Suggestions for Task Priority</h2>
+            {% for s in grouped.priority %}
+                <p>❖ {{ s.text }}</p>
+            {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+    <!--Style of the page-->
+    <style>
+        html, body {
+            background-color: white;            
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
