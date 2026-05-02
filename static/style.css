@@ -1,0 +1,530 @@
+/*Styling for Login & Create Account Pages*/
+/*Create box around login credentials*/
+.login-box {
+    border: 2px solid black; 
+    background-color: white;
+    padding: 20px;                    
+    width: 400px;
+    position: relative;
+    padding-bottom: 80px;
+}
+
+/*Login header*/
+.login-header{
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  margin-top: 40px;
+}
+
+/*Login body*/
+.login-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/*Left button*/
+.login-button-left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+/*Right button*/
+.login-button-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+/*Color for errors*/
+.error {
+    color: red;
+}
+
+/**********************************************************/
+/*Styling for Home Page*/
+/* Menu button */
+.menu-btn {
+font-size: 40px;
+height: 90px;
+width: 90px;
+cursor: pointer;
+border: 1px solid black;
+background: rgb(238, 234, 234);
+color: black;
+position: absolute;
+top: 50%;           
+left: 20px;         
+transform: translateY(-50%);
+}
+
+/* The side navigation menu */
+.side-menu {
+height: 100%;
+width: 0;
+position: fixed;
+top: 0;
+left: 0;
+background-color: #111;
+overflow-x: hidden;
+transition: 0.3s;
+padding-top: 60px;
+z-index: 1500;
+}
+
+/* Side menu links */
+.side-menu a {
+padding: 12px 24px;
+text-decoration: none;
+font-size: 18px;
+color: #ddd;
+display: block;
+transition: 0.2s;
+}
+
+.side-menu a:hover {
+background-color: #575757;
+color: white;
+}
+
+/* Close button inside menu */
+.side-menu .close-btn {
+position: absolute;
+top: 10px;
+right: 20px;
+font-size: 30px;
+color: white;
+cursor: pointer;
+}
+
+/* Optional overlay when menu is open */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: rgba(0,0,0,0.5);
+    transition: 0.3s;
+    z-index: 1400;
+}
+
+/*Home page header*/
+.home-header {
+  background-color: rgb(237, 148, 126);
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  position: relative; 
+}
+
+/*Create a container so features can be side-by-side in the html UI design*/
+.container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/*Create the legend section*/
+.legend-section {
+    flex: 1;
+    padding: 10px;                            
+}
+
+/*Create the deadline section*/
+.deadline-section {
+    border-left: 2px solid black; 
+    padding: 20px;          
+    margin: 10px;           
+    width: 300px;
+}
+
+/*Color for overdue tasks*/
+.overdue {
+    color: red;
+}
+
+/*Style format for buttons*/
+input, button {
+    padding: 5px;
+    margin: 5px 0;
+}
+
+/*Style format for unordered lists*/
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.calendar {
+    flex: 3;
+    border-radius: 10px;
+    background: white;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    background: lightblue;
+}
+
+.calendar-header button {
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+}
+
+.day-name {
+    font-weight: bold;
+    padding: 5px;
+    border-bottom: 3px solid black;
+}
+
+.day {
+    padding: 5px;
+    margin: 2px;
+    border-radius: 2px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: solid 1px black;
+}
+
+.today {
+    border: 3px solid black;
+    font-weight: bold;
+    background: lightgoldenrodyellow;
+}
+
+.task-box {
+    position: relative;
+    z-index: 10;        
+    cursor: pointer;    
+    margin-top: 3px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    width: 100%;
+    text-align: left;
+}
+
+.default-task {
+    background-color: grey;
+    color: white;
+}
+
+.science-task {
+    background-color: green;
+    color: white;
+}
+
+.math-task {
+    background-color: red;
+    color: white;
+}
+
+.english-task {
+    background-color: blue;
+    color: white;
+}
+
+.humanities-task {
+    background-color: orange;
+    color: black;
+}
+
+.language-task {
+    background-color: purple;
+    color: white;
+}
+
+/* Modal Background */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  border-radius: 10px;
+  position: relative;
+}
+
+/* Close Button */
+.modal .close {
+  color: #aaa;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal .close:hover {
+  color: black;
+}
+
+/**********************************************************/
+/*Styling for Add Task Page*/
+/*Style format for large text boxs*/
+textarea {
+    width: 400px;
+    height: 150px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    resize: both;
+    margin-left: 10px;
+  }
+
+/*Submission bar*/
+.submission-bar {
+    display: flex;
+    background-color: rgb(238, 234, 234);
+    padding: 8px;
+    margin-top: 10px;
+}
+
+/*Submission bar buttons*/
+.submission-item {
+    flex: 1;
+    border-right: 2px solid black;
+    display: flex;
+}
+
+.submission-item a, .submission-item button{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: monospace;
+    font-size: 20px;
+    line-height: 1;    
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.submission-item:last-child {
+    border-right: none;
+  }
+
+/**********************************************************/
+/*Styling for Task List Page*/
+/*Style of all task rows*/
+.task-row {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+/*Style of task list labels*/
+.labels {
+    background-color: black;
+    color:white;
+    border: 2px solid black;
+}
+
+/*Style of task list row*/
+.task-row:not(.labels) {
+    background-color: #f4f4f4;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+/*Position of each information cell*/
+.task-cell.name { flex: 1.5; }
+.task-cell.due { flex: 1.2; }
+.task-cell.priority { flex: 1; }
+.task-cell.status { flex: 1; }
+.task-cell.actions { flex: 0.7; }
+
+/*Align edit/delete buttons to the right*/
+.task-cell.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/*Edit task button*/
+.editButton {
+    background-color: lightgreen;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/*Delete task button*/
+.delete-button {
+    background-color: red;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/*Color for high-priority tasks*/
+.priority-High {
+    color: red;
+}
+
+/*Color for medium-priority tasks*/
+.priority-Medium {
+    color: orange;
+}
+
+/*Color for low-priority tasks*/
+.priority-Low {
+    color: green;
+}
+
+/**********************************************************/
+/*Styling for Task Edit Pop-up Window*/
+/*Style of task window*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/*Style for task information*/
+.modal-content {
+    background: white;
+    width: 400px;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/*Style for buttons*/
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* Make each label/input stack vertically */
+#editTaskForm label,
+#editTaskForm input,
+#editTaskForm select {
+    display: block;       /* forces each element onto its own line */
+    width: 100%;          /* optional: makes input/select full width */
+    margin-bottom: 10px;  /* space between fields */
+    box-sizing: border-box;
+}
+
+/**********************************************************/
+/*Styling for Suggestion page*/
+/*Create a container so suggestions can be side-by-side*/
+.suggestion-container {
+    display: flex;                
+    justify-content: center;      
+    align-items: flex-start;          
+    gap: 10px;                    
+    padding: 10px;
+}
+
+/*Section for each type of suggestion*/
+.suggestion-box {
+    border: 2px solid black; 
+    padding: 20px;          
+    margin: 10px;           
+    width: 500px;
+    background: rgb(198, 226, 235);
+}
+
+.legend {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  align-items: center;
+  flex-direction: column;
+  border: solid 2px black;
+  width: fit-content;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 6px;
+  padding: 5px;
+  width: 200px;
+}
+
+.color-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  border: solid 1px black;
+}
+
+/* Match these to your task colors */
+.color-box.math {
+  background-color: red;
+}
+
+.color-box.science {
+  background-color: green;
+}
+
+.color-box.english {
+  background-color: blue;
+}
+
+.color-box.humanities {
+  background-color: orange;
+}
+
+.color-box.language {
+  background-color: purple;
+}
+
+.color-box.default {
+  background-color: grey;
+}
